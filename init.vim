@@ -28,13 +28,20 @@ Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
 Plug 'https://github.com/BurntSushi/ripgrep'
 Plug 'https://github.com/sharkdp/fd'
 Plug 'https://github.com/preservim/nerdtree'
+Plug 'https://github.com/vhda/verilog_systemverilog.vim'
+Plug 'https://github.com/junegunn/fzf', {'do': {->fzf#install()}}
 
 call plug#end()
 
 "Configure for NERDTree
+let g:mapleader="\<Space>"
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTree<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 let g:NerdTreeDirArrowExpandable="+"
 let g:NerdTreeDirArrowCollapsible="~"
 
