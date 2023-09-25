@@ -6,24 +6,37 @@
 :set mouse=a
 :set smarttab
 :set softtabstop=4
+:set modifiable
 
 let g:neovide_transparency = 0.6
 let g:transparency = 0.8
-let g:neovide_background_color = '#0f1117'.printf('%x', float2nr(255 * g:transparency))
 let g:neovide_touch_drag_timeout = 0.17
 let g:neovide_cursor_animation_length = 0.03
 let g:neovide_cursor_trail_size = 0.6
-let g:Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_2/bin/ctags'
 
-call plug#begin()
+call plug#begin('C:\Users\hit_t\AppData\Local\nvim\autoload\plugged')
 
 Plug 'https://github.com/vim-airline/vim-airline'
 Plug 'https://github.com/rafi/awesome-vim-colorschemes'
 Plug 'https://github.com/preservim/tagbar'
 Plug 'https://github.com/neoclide/coc.nvim'
 Plug 'https://github.com/jiangmiao/auto-pairs'
+Plug 'https://github.com/neovim/nvim-lspconfig'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.3' }
+Plug 'https://github.com/nvim-treesitter/nvim-treesitter'
+Plug 'https://github.com/BurntSushi/ripgrep'
+Plug 'https://github.com/sharkdp/fd'
+Plug 'https://github.com/preservim/nerdtree'
 
 call plug#end()
+
+"Configure for NERDTree
+nnoremap <C-f> :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTree<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+let g:NerdTreeDirArrowExpandable="+"
+let g:NerdTreeDirArrowCollapsible="~"
 
 "colorscheme deep-space
 colorscheme iceberg
@@ -39,7 +52,6 @@ inoremap <silent><expr> <TAB>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
